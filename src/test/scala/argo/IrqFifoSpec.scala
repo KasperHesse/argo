@@ -144,7 +144,7 @@ class IrqFifoSpec extends AnyFlatSpec with ChiselScalatestTester {
   }
 
   it should "generate an error when reading an address larger than 1" in {
-    test(new IrqFifoWrapper).withAnnotations(Seq(VerilatorBackendAnnotation, WriteVcdAnnotation)) {dut =>
+    test(new IrqFifoWrapper).withAnnotations(Seq(VerilatorBackendAnnotation)) {dut =>
       dut.io.in.config.en.poke(true.B)
       dut.io.in.config.wr.poke(false.B)
       dut.io.in.sel.poke(true.B)
@@ -157,7 +157,7 @@ class IrqFifoSpec extends AnyFlatSpec with ChiselScalatestTester {
   }
 
   it should "fill the data queue crossing back to the start" in {
-    test(new IrqFifoWrapper).withAnnotations(Seq(VerilatorBackendAnnotation, WriteVcdAnnotation)) {dut =>
+    test(new IrqFifoWrapper).withAnnotations(Seq(VerilatorBackendAnnotation)) {dut =>
       val R = scala.util.Random
       //First data to write in and fetch back out
       val data1 = Array.fill(math.pow(2,IRQ_FIFO_IDX_WIDTH-1).toInt)(R.nextInt(math.pow(2,IRQ_DATA_WIDTH).toInt))

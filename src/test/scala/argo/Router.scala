@@ -6,7 +6,7 @@ import org.scalatest.flatspec.AnyFlatSpec
 
 class SingleRouterPort0Test extends AnyFlatSpec with ChiselScalatestTester{
   "DUT" should "pass" in{
-    test(new Router).withAnnotations(Seq(WriteVcdAnnotation)) {dut=>
+    test(new Router) {dut=>
       for(i <- 0 to 4){
         if(i === 0){
           //Incoming packet from port 0 (south) directed to port 4 (home).
@@ -77,7 +77,7 @@ class SingleRouterPort0Test extends AnyFlatSpec with ChiselScalatestTester{
 
 class SingleRouterPort1Test extends AnyFlatSpec with ChiselScalatestTester{
   "DUT" should "pass" in{
-    test(new Router).withAnnotations(Seq(WriteVcdAnnotation)){dut=>
+    test(new Router){dut=>
       for(i <- 0 to 4){
         if(i ===1){
           dut.io.inPort.port(i).data.poke("b11000111111111111111111111111111101".U)
@@ -144,7 +144,7 @@ class SingleRouterPort1Test extends AnyFlatSpec with ChiselScalatestTester{
 
 class SingleRouterPort2Test extends AnyFlatSpec with ChiselScalatestTester{
   "DUT" should "pass" in{
-    test(new Router).withAnnotations(Seq(WriteVcdAnnotation)){dut=>
+    test(new Router) {dut=>
       for(i <- 0 to 4){
         if(i ===2){
           dut.io.inPort.port(i).data.poke("b11000111111111111111111111111111110".U)
@@ -211,7 +211,7 @@ class SingleRouterPort2Test extends AnyFlatSpec with ChiselScalatestTester{
 
 class SingleRouterPort3Test extends AnyFlatSpec with ChiselScalatestTester{
   "DUT" should "pass" in{
-    test(new Router).withAnnotations(Seq(WriteVcdAnnotation)){dut=>
+    test(new Router) {dut=>
       for(i <- 0 to 4){
         if(i ===3){
           dut.io.inPort.port(i).data.poke("b11000111111111111111111111111111111".U)
